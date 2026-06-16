@@ -1,0 +1,73 @@
+<main class="admin-turnos-page">
+  <section class="admin-hero">
+    <p class="eyebrow">Panel de administración</p>
+    <h1>Turnos agendados</h1>
+    <p>Visualizá todas las reservas y aplicá filtros por profesional o por día del mes.</p>
+  </section>
+
+  <section class="filter-card" *ngIf="isAdmin">
+    <div class="filters-grid">
+      <label class="field">
+        <span>Profesional</span>
+        <select [(ngModel)]="selectedProfessional">
+          <option value="">Todas</option>
+          <option *ngFor="let professional of professionals" [value]="professional">{{ professional }}</option>
+        </select>
+      </label>
+
+      <label class="field">
+        <span>Día del mes</span>
+        <input
+          type="number"
+          min="1"
+          max="31"
+          [(ngModel)]="selectedDay"
+          placeholder="Ej: 14" />
+      </label>
+    </div>
+
+    <div class="filter-actions">
+      <button type="button" class="btn-primary" (click)="applyFilters()">Aplicar filtros</button>
+      <button type="button" class="btn-secondary" (click)="clearFilters()">Limpiar</button>
+    </div>
+  </section>
+
+  <p class="error-message" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+  <section class="table-card" *ngIf="isAdmin && !loading">
+    <table *ngIf="appointments.length > 0; else noAppointments">
+      <thead>
+        <tr>
+          <th>Solicitante</th>
+          <th>DNI</th>
+          <th>Correo</th>
+          <th>Teléfono</th>
+          <th>Profesional</th>
+          <th>Fecha</th>
+          <th>Hora</th>
+          <th>Mensaje</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let appointment of appointments">
+          <td>{{ appointment.nombre }} {{ appointment.apellido }}</td>
+          <td>{{ appointment.dni }}</td>
+          <td>{{ appointment.correo }}</td>
+          <td>{{ appointment.telefono }}</td>
+          <td>{{ appointment.profesional }}</td>
+          <td>{{ appointment.fecha }}</td>
+          <td>{{ appointment.hora }}</td>
+          <td>{{ appointment.mensaje }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <ng-template #noAppointments>
+      <div class="empty-state">
+        <p>No hay turnos para los filtros seleccionados.</p>
+      </div>
+    </ng-template>
+  </section>
+
+  <p class="loading-message" *ngIf="isAdmin && loading">Cargando turnos...</p>
+</main>

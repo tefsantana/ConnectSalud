@@ -1,0 +1,53 @@
+<main class="historial-page">
+  <section class="historial-hero">
+    <p class="eyebrow">Gestión de turnos</p>
+    <h1>Mis citas</h1>
+    <p>Historial de turnos solicitados. Podés editar o cancelar cada cita desde aquí.</p>
+  </section>
+
+  <div class="historial-actions-top">
+    <button type="button" routerLink="/turnos" class="btn-nueva-cita">+ Nueva cita</button>
+  </div>
+
+  <div class="historial-tabla-wrap">
+    <table class="historial-tabla" *ngIf="users?.length > 0; else sinCitas">
+      <thead>
+        <tr>
+          <th>DNI</th>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Teléfono</th>
+          <th>Correo</th>
+          <th>Fecha</th>
+          <th>Hora</th>
+          <th>Mensaje</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{ user.dni }}</td>
+          <td>{{ user.nombre }}</td>
+          <td>{{ user.apellido }}</td>
+          <td>{{ user.telefono }}</td>
+          <td>{{ user.correo }}</td>
+          <td>{{ user.fecha }}</td>
+          <td>{{ user.hora }}</td>
+          <td class="col-mensaje">{{ user.mensaje }}</td>
+          <td class="col-acciones">
+            <button [routerLink]="['/edit/', user.id_paciente]" class="btn-editar" title="Editar">Editar</button>
+            <button (click)="deleteCitas(user.id_paciente)" class="btn-borrar" title="Cancelar cita">Cancelar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <ng-template #sinCitas>
+      <div class="sin-citas">
+        <p>No tenés citas registradas todavía.</p>
+        <button type="button" routerLink="/turnos" class="btn-nueva-cita">Reservar tu primera cita</button>
+      </div>
+    </ng-template>
+  </div>
+</main>
+

@@ -1,0 +1,61 @@
+<main class="editar-cita-page">
+  <section class="editar-cita-hero">
+    <p class="eyebrow">Gestión de turnos</p>
+    <h1>Editar reserva de cita</h1>
+    <p>Actualizá los datos del turno y guardá los cambios para mantener tu agenda al día.</p>
+  </section>
+
+  <div class="editar-cita-card">
+    <form [formGroup]="angForm" (ngSubmit)="postdata(angForm)" autocomplete="off" class="editar-cita-form">
+      <div class="field-grid">
+        <label class="field">
+          <span>DNI</span>
+          <input type="number" formControlName="dni" placeholder="Número de documento" />
+        </label>
+
+        <label class="field">
+          <span>Teléfono</span>
+          <input type="text" formControlName="telefono" placeholder="+54 11 0000-0000" />
+        </label>
+
+        <label class="field">
+          <span>Nombre</span>
+          <input type="text" formControlName="nombre" placeholder="Nombre del paciente" />
+        </label>
+
+        <label class="field">
+          <span>Apellido</span>
+          <input type="text" formControlName="apellido" placeholder="Apellido del paciente" />
+        </label>
+
+        <label class="field field--full">
+          <span>Correo electrónico</span>
+          <input type="text" formControlName="correo" placeholder="correo@ejemplo.com" />
+        </label>
+
+        <label class="field">
+          <span>Fecha</span>
+          <input type="date" formControlName="fecha" />
+        </label>
+
+        <label class="field">
+          <span>Hora</span>
+          <input type="time" formControlName="hora" />
+        </label>
+
+        <label class="field field--full">
+          <span>Mensaje</span>
+          <input type="text" formControlName="mensaje" placeholder="Motivo o detalle de la cita" />
+        </label>
+      </div>
+
+      <div class="editar-cita-actions">
+        <button type="submit" class="btn-guardar">Guardar cambios</button>
+        <button type="button" class="btn-secondary" routerLink="/list-citas">Volver al historial</button>
+        <button type="button" class="btn-ghost" routerLink="/turnos">Nueva reserva</button>
+      </div>
+
+      <p class="booking-error" *ngIf="bookingError">{{ bookingError }}</p>
+    </form>
+  </div>
+</main>

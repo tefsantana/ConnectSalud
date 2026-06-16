@@ -1,0 +1,105 @@
+<main class="turnos-page">
+  <section class="turnos-hero">
+    <p class="eyebrow">Gestión de turnos</p>
+    <h1>Reservá tu cita</h1>
+    <p>Completá el formulario y confirmá tu turno con uno de nuestros profesionales.</p>
+  </section>
+
+  <section class="availability-card">
+    <h2>Disponibilidad de turnos</h2>
+    <p>Seleccioná un día y luego un horario disponible para reservar.</p>
+
+    <div class="availability-days">
+      <button
+        type="button"
+        class="day-chip"
+        *ngFor="let day of availabilityDays"
+        [class.selected]="day.date === selectedDate"
+        [class.full]="day.available === 0"
+        (click)="selectDay(day.date)">
+        <span class="day-label">{{ day.label }}</span>
+        <span class="day-slots">{{ day.available }}/{{ day.total }} libres</span>
+      </button>
+    </div>
+
+    <div class="availability-slots">
+      <button
+        type="button"
+        class="slot-chip"
+        *ngFor="let slot of timeSlots"
+        [disabled]="isSlotOccupied(slot)"
+        [class.selected]="isSelectedSlot(slot)"
+        (click)="selectSlot(slot)">
+        {{ slot }}
+      </button>
+    </div>
+
+    <p class="availability-note">La fecha y hora seleccionadas se guardan automáticamente al confirmar la reserva.</p>
+  </section>
+
+  <div class="turnos-card">
+    <form [formGroup]="angForm" (ngSubmit)="postdata(angForm)" autocomplete="off" class="turnos-form">
+
+      <div class="field-grid">
+        <label class="field">
+          <span>DNI</span>
+          <input type="number" formControlName="dni" placeholder="Número de documento" />
+        </label>
+
+        <label class="field">
+          <span>Teléfono</span>
+          <input type="tel" formControlName="telefono" placeholder="+54 11 0000-0000" />
+        </label>
+
+        <label class="field">
+          <span>Nombre</span>
+          <input type="text" formControlName="nombre" placeholder="Tu nombre" />
+        </label>
+
+        <label class="field">
+          <span>Apellido</span>
+          <input type="text" formControlName="apellido" placeholder="Tu apellido" />
+        </label>
+
+        <label class="field field--full">
+          <span>Correo electrónico</span>
+          <input type="email" formControlName="correo" placeholder="tu@email.com" />
+        </label>
+
+        <label class="field field--full">
+          <span>Profesional</span>
+          <select formControlName="profesional">
+            <option *ngFor="let professional of professionals" [value]="professional">{{ professional }}</option>
+          </select>
+        </label>
+
+        <div class="selection-summary field--full">
+          <span>Día seleccionado</span>
+          <strong>{{ selectedDateLabel }}</strong>
+          <span>Profesional asignada</span>
+          <strong>{{ angForm.get('profesional')?.value || 'Sin profesional seleccionada' }}</strong>
+          <span>Horario seleccionado</span>
+          <strong>{{ angForm.get('hora')?.value || 'Sin horario seleccionado' }}</strong>
+        </div>
+
+        <input type="hidden" formControlName="fecha" />
+        <input type="hidden" formControlName="hora" />
+
+        <label class="field field--full">
+          <span>Mensaje (opcional)</span>
+          <input type="text" formControlName="mensaje" placeholder="Indica el motivo de la consulta" />
+        </label>
+      </div>
+
+      <div class="turnos-actions">
+        <button type="button" class="btn-reservar" (click)="postdata(angForm)">Confirmar reserva</button>
+        <button type="button" routerLink="/list-citas" class="btn-secondary">Ver mis citas</button>
+        <button type="button" routerLink="/inicio" class="btn-ghost">Volver al inicio</button>
+      </div>
+
+      <p class="booking-error" *ngIf="bookingError">{{ bookingError }}</p>
+
+    </form>
+  </div>
+</main>
+

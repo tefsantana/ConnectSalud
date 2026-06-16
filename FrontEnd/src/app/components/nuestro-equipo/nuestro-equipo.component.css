@@ -1,0 +1,163 @@
+.equipo-page {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 52px 24px 80px;
+}
+
+.equipo-hero {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  color: #113a8f;
+  font-size: 0.84rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.equipo-hero h1 {
+  margin: 0 0 10px;
+  color: #0b2d75;
+  font-size: clamp(1.9rem, 3.8vw, 2.6rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.equipo-hero p {
+  margin: 0 auto;
+  max-width: 50ch;
+  color: #4a5568;
+  line-height: 1.6;
+}
+
+.team-grid {
+  display: grid;
+  gap: 14px;
+}
+
+.team-card {
+  background: #ffffff;
+  border: 1px solid #e8ecf5;
+  border-radius: 18px;
+  padding: 20px 22px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(17, 58, 143, 0.06);
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  user-select: none;
+}
+
+.team-card:hover {
+  box-shadow: 0 8px 26px rgba(17, 58, 143, 0.12);
+  border-color: #bccaf5;
+}
+
+.team-card--open {
+  border-color: #113a8f;
+  box-shadow: 0 8px 28px rgba(17, 58, 143, 0.14);
+}
+
+.team-card-top {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 16px;
+  align-items: center;
+}
+
+.team-avatar {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #dce4f3;
+  flex-shrink: 0;
+}
+
+.team-card-info {
+  display: grid;
+  gap: 2px;
+}
+
+.team-card-info h2 {
+  margin: 0;
+  color: #0b2d75;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.especialidad {
+  margin: 0;
+  color: #113a8f;
+  font-size: 0.87rem;
+  font-weight: 500;
+}
+
+.matricula {
+  margin: 0;
+  color: #7a89a8;
+  font-size: 0.82rem;
+}
+
+.toggle-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #f0f4ff;
+  border: 1px solid #dce4f3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  font-weight: 300;
+  color: #113a8f;
+  flex-shrink: 0;
+  transition: background 0.18s ease;
+}
+
+.team-card--open .toggle-icon {
+  background: #113a8f;
+  color: #ffffff;
+  border-color: #113a8f;
+}
+
+.team-card-bio {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid #e8ecf5;
+}
+
+.team-card-bio p {
+  margin: 0;
+  color: #3a4f78;
+  font-size: 0.92rem;
+  line-height: 1.65;
+}
+
+.loading-state {
+  text-align: center;
+  color: #7a89a8;
+  padding: 40px 0;
+}
+
+.error-state {
+  text-align: center;
+  color: #b02a37;
+  padding: 40px 0;
+}
+
+@media (max-width: 600px) {
+  .equipo-page {
+    padding: 36px 14px 60px;
+  }
+
+  .team-card {
+    padding: 16px 14px;
+  }
+
+  .team-avatar {
+    width: 54px;
+    height: 54px;
+  }
+}

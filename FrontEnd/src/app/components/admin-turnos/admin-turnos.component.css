@@ -1,0 +1,158 @@
+.admin-turnos-page {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 48px 20px 80px;
+}
+
+.admin-hero {
+  margin-bottom: 20px;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  color: #113a8f;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.admin-hero h1 {
+  margin: 0 0 8px;
+  color: #0b2d75;
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+}
+
+.admin-hero p {
+  margin: 0;
+  color: #4f5f80;
+}
+
+.filter-card,
+.table-card {
+  border: 1px solid #dfe6f6;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 8px 22px rgba(17, 58, 143, 0.08);
+}
+
+.filter-card {
+  padding: 18px;
+  margin-bottom: 14px;
+}
+
+.filters-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.field {
+  display: grid;
+  gap: 7px;
+}
+
+.field span {
+  color: #213359;
+  font-size: 0.86rem;
+  font-weight: 600;
+}
+
+.field select,
+.field input {
+  width: 100%;
+  border: 1px solid #d1dbef;
+  border-radius: 10px;
+  padding: 10px 12px;
+  font: inherit;
+}
+
+.field select:focus,
+.field input:focus {
+  outline: none;
+  border-color: #113a8f;
+  box-shadow: 0 0 0 3px rgba(17, 58, 143, 0.14);
+}
+
+.filter-actions {
+  margin-top: 12px;
+  display: flex;
+  gap: 10px;
+}
+
+.btn-primary,
+.btn-secondary {
+  border-radius: 10px;
+  padding: 9px 16px;
+  font: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.btn-primary {
+  border: 0;
+  background: #113a8f;
+  color: #ffffff;
+}
+
+.btn-secondary {
+  border: 1px solid #113a8f;
+  color: #113a8f;
+  background: #ffffff;
+}
+
+.error-message,
+.loading-message {
+  margin: 10px 0;
+  color: #a22b3a;
+  font-size: 0.92rem;
+}
+
+.table-card {
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 920px;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 12px;
+  border-bottom: 1px solid #e8eef9;
+  font-size: 0.9rem;
+  color: #2a3a5d;
+}
+
+th {
+  color: #0d2f7a;
+  background: #f5f8ff;
+  font-weight: 700;
+}
+
+.empty-state {
+  padding: 18px;
+  color: #5a6786;
+}
+
+@media (max-width: 760px) {
+  .admin-turnos-page {
+    padding: 34px 12px 60px;
+  }
+
+  .filters-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .filter-actions {
+    flex-direction: column;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+  }
+}

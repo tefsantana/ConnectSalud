@@ -1,31 +1,44 @@
-# Proyecto ConnectSalud
-
+# ConnectSalud 2026
 ## Sitio Web de Cuidado de la Salud
 
-Monitoreo de Peso, Información sobre hábitos saludables, recetas y suplementos dietarios.
+Podés agendar turnos con cualquiera de nuestros profesionales de la salud.
 
-## Proyecto dividido en dos directorios
+## Tecnologías utilizadas
 
-- Fullstack2022
-- ProgramadorWeb2023
+- [Angular](https://github.com/angular/angular-cli)
+- [django](https://www.djangoproject.com/)
+- [Django Rest Framework](https://www.django-rest-framework.org/)
 
-## Fullstack2022
+## Requisitos previos
 
-Proyecto Creado con FrontEnd de [Boostrap](https://getbootstrap.com/) y BackEnd en [Python](https://www.python.org/) para el Primer Año te la Tecnicatura de Desarrollo Web y Aplicaciones Digitales del ISPC
+`Node.js` y `Angular CLI` instalados
+`Python` y `Django` instalados
 
-## ProgramadorWeb2023
+## Pasos para la correcta conexion del FrontEnd en Angular
 
-Proyecto Creado con FrontEnd en [Angular](https://angular.io/) y BackEnd en [Django](https://www.python.org/) con su [Rest Framework](https://www.django-rest-framework.org/) para el Segundo Año te la Tecnicatura de Desarrollo Web y Aplicaciones Digitales del ISPC
+- Clonar este repositorio.
+- Instalar las dependencias de Angular:
+cd FrontEnd
+`npm install`
 
-## Miembros del Grupo28
+- Iniciar el servidor de desarrollo de Angular:
+`ng serve --o`
 
-- Montenegro, Jonathan
+## Pasos para la correcta conexion del BackEnd en Django
 
-- Coronel, Ediberto
+- En otra terminal, nos colocamos:
+cd BackEnd/ApiRegister
 
-- Sanchez, Samira
+- Activar entorno virtual para aislar nuestras dependencias de paquetes localmente
+source env/bin/activate # En Windows usa `env\Scripts\activate`
 
-- Mingorance Pico, Desirée
+- Iniciar el servidor de desarrollo de Django:
+`python manage.py runserver`
+
+## Uso
+ - Acceder al frontend en `http://localhost:4200/#/inicio`
+ - Acceder al backend en `http://127.0.0.1:8000`
+
 
 ## Licencia
-Este proyecto está bajo la Licencia de `Grupo28` del ISPC
+Este proyecto está bajo la Licencia de `Grupo 4` de la materia Programación de Vanguardia de UNICABA

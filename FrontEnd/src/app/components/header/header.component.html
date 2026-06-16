@@ -1,0 +1,34 @@
+<header class="app-header" [class.compact]="isCompactHeader">
+    <div class="header-shell" #headerShell [class.menu-open]="mobileMenuOpen">
+        <a routerLink="/inicio" class="brand" (click)="closeMobileMenu()">
+            <span class="brand-text"><strong>Connect</strong> <em>Salud</em></span>
+        </a>
+
+        <button class="mobile-toggle" type="button" (click)="toggleMobileMenu()" aria-label="Abrir menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav class="header-nav" [class.open]="mobileMenuOpen">
+            <a routerLink="/planes" (click)="closeMobileMenu()">Planes</a>
+            <a routerLink="/nuestro-equipo" (click)="closeMobileMenu()">Nuestro equipo</a>
+            <a routerLink="/contacto" (click)="closeMobileMenu()">Contacto</a>
+            <a *ngIf="loggedIn && isAdmin" routerLink="/admin-turnos" (click)="closeMobileMenu()">Profesionales turnos</a>
+        </nav>
+
+        <div class="header-actions" [class.open]="mobileMenuOpen">
+            <ng-container *ngIf="!loggedIn; else loggedUser">
+                <a routerLink="/login" class="btn-solid" (click)="closeMobileMenu()">Iniciar sesión</a>
+                <a routerLink="/register" class="btn-outline" (click)="closeMobileMenu()">Registrarse</a>
+            </ng-container>
+
+            <ng-template #loggedUser>
+                <a routerLink="/perfil" class="profile-link" (click)="closeMobileMenu()">
+                    <img src="./assets/img/user-profile.png" alt="Perfil" />
+                </a>
+                <button class="btn-outline" type="button" (click)="logout(); closeMobileMenu()">Cerrar sesión</button>
+            </ng-template>
+        </div>
+    </div>
+</header>

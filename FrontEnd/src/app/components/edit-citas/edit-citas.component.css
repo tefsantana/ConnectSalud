@@ -1,0 +1,185 @@
+.editar-cita-page {
+	max-width: 900px;
+	margin: 0 auto;
+	padding: 52px 24px 80px;
+}
+
+.editar-cita-hero {
+	text-align: center;
+	margin-bottom: 30px;
+}
+
+.eyebrow {
+	margin: 0 0 10px;
+	color: #113a8f;
+	font-size: 0.84rem;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+.editar-cita-hero h1 {
+	margin: 0 0 10px;
+	color: #0b2d75;
+	font-size: clamp(1.9rem, 3.8vw, 2.6rem);
+	line-height: 1.15;
+	letter-spacing: -0.02em;
+}
+
+.editar-cita-hero p {
+	margin: 0 auto;
+	max-width: 56ch;
+	color: #4a5568;
+	line-height: 1.6;
+}
+
+.editar-cita-card {
+	background: #ffffff;
+	border: 1px solid #e8ecf5;
+	border-radius: 22px;
+	padding: 32px 30px;
+	box-shadow: 0 8px 28px rgba(17, 58, 143, 0.08);
+	background: linear-gradient(180deg, rgba(17, 58, 143, 0.03) 0%, rgba(17, 58, 143, 0) 100px), #ffffff;
+}
+
+.editar-cita-form {
+	display: grid;
+	gap: 20px;
+}
+
+.field-grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 14px;
+}
+
+.field {
+	display: grid;
+	gap: 7px;
+}
+
+.field--full {
+	grid-column: 1 / -1;
+}
+
+.field > span {
+	font-size: 0.87rem;
+	font-weight: 600;
+	color: #213359;
+}
+
+.field input {
+	width: 100%;
+	border: 1px solid #d7deee;
+	border-radius: 12px;
+	padding: 11px 13px;
+	font: inherit;
+	font-size: 0.95rem;
+	color: #1f2d49;
+	background: #ffffff;
+	transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.field input:focus {
+	outline: none;
+	border-color: #113a8f;
+	box-shadow: 0 0 0 3px rgba(17, 58, 143, 0.13);
+}
+
+.editar-cita-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	align-items: center;
+}
+
+.btn-guardar {
+	border: 0;
+	border-radius: 12px;
+	background: #113a8f;
+	color: #ffffff;
+	padding: 11px 24px;
+	font: inherit;
+	font-size: 0.95rem;
+	font-weight: 600;
+	cursor: pointer;
+	box-shadow: 0 8px 22px rgba(17, 58, 143, 0.24);
+	transition: background 0.2s ease, transform 0.13s ease, box-shadow 0.2s ease;
+}
+
+.btn-guardar:hover {
+	background: #0d2a6b;
+	transform: translateY(-1px);
+	box-shadow: 0 10px 28px rgba(17, 58, 143, 0.3);
+}
+
+.btn-secondary {
+	border: 1.5px solid #113a8f;
+	border-radius: 12px;
+	background: #ffffff;
+	color: #113a8f;
+	padding: 10px 20px;
+	font: inherit;
+	font-size: 0.92rem;
+	font-weight: 500;
+	cursor: pointer;
+	transition: background 0.18s ease, color 0.18s ease;
+}
+
+.btn-secondary:hover {
+	background: #f0f4ff;
+}
+
+.btn-ghost {
+	border: 0;
+	background: transparent;
+	color: #7a89a8;
+	padding: 10px 16px;
+	font: inherit;
+	font-size: 0.9rem;
+	cursor: pointer;
+	transition: color 0.18s ease;
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+
+.btn-ghost:hover {
+	color: #4a5568;
+}
+
+.booking-error {
+	margin: 0;
+	color: #b02a37;
+	font-size: 0.9rem;
+}
+
+@media (max-width: 680px) {
+	.editar-cita-page {
+		padding: 36px 14px 60px;
+	}
+
+	.editar-cita-card {
+		padding: 22px 16px;
+		border-radius: 16px;
+	}
+
+	.field-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.field--full {
+		grid-column: auto;
+	}
+
+	.editar-cita-actions {
+		flex-direction: column;
+		align-items: stretch;
+	}
+
+	.btn-guardar,
+	.btn-secondary,
+	.btn-ghost {
+		width: 100%;
+		text-align: center;
+	}
+}

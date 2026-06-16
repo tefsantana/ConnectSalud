@@ -1,0 +1,36 @@
+<main class="register-page">
+  <div class="register-card">
+    <div class="register-brand">
+      <a routerLink="/inicio" class="brand-link">Connect Salud</a>
+      <p>Crea tu cuenta y comenzá hoy</p>
+    </div>
+
+    <form [formGroup]="myform" (ngSubmit)="registerUser(); myform.valid ? myform.reset() : null" class="register-form">
+      <label class="field">
+        <span>Usuario</span>
+        <input type="text" formControlName="username" autocomplete="username" placeholder="Elegí un nombre de usuario" />
+        <span class="field-error" *ngIf="f['username'].touched && f['username'].errors?.['required']">El usuario es obligatorio.</span>
+        <span class="field-error" *ngIf="f['username'].touched && f['username'].errors?.['minlength']">Mínimo 4 caracteres.</span>
+      </label>
+
+      <label class="field">
+        <span>Email</span>
+        <input type="email" formControlName="email" autocomplete="email" placeholder="tu@email.com" />
+        <span class="field-error" *ngIf="f['email'].touched && f['email'].errors?.['required']">El email es obligatorio.</span>
+      </label>
+
+      <label class="field">
+        <span>Contraseña</span>
+        <input type="password" formControlName="password" autocomplete="new-password" placeholder="••••••••" />
+        <span class="field-error" *ngIf="f['password'].touched && f['password'].errors?.['required']">La contraseña es obligatoria.</span>
+      </label>
+
+      <button type="submit" class="register-btn">Crear cuenta</button>
+    </form>
+
+    <div class="register-footer">
+      <span>¿Ya tenés cuenta? <a routerLink="/login" class="link-accent">Iniciar sesión</a></span>
+    </div>
+  </div>
+</main>
+

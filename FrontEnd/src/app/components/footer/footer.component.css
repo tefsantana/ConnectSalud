@@ -1,0 +1,45 @@
+.app-footer {
+	background: #113a8f;
+	color: #dfe8ff;
+}
+
+.footer-shell {
+	max-width: 1160px;
+	margin: 0 auto;
+	padding: 34px 24px;
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 26px;
+  justify-items: center;
+}
+
+.footer-shell section {
+	display: grid;
+	gap: 6px;
+}
+
+.footer-shell h3 {
+	margin: 0 0 8px;
+	color: #ffffff;
+	font-size: 1rem;
+}
+
+.footer-shell a,
+.footer-shell small {
+	color: #dfe8ff;
+	font-size: 0.88rem;
+	text-decoration: underline;
+	text-underline-offset: 4px;
+}
+
+.footer-shell small {
+	text-decoration: none;
+	margin-top: 8px;
+}
+
+@media (max-width: 700px) {
+	.footer-shell {
+    grid-template-columns: 1fr;
+    text-align: center;
+	}
+}

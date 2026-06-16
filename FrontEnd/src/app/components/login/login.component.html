@@ -1,0 +1,28 @@
+<main class="login-page">
+  <div class="login-card">
+    <div class="login-brand">
+      <a routerLink="/inicio" class="brand-link">Connect Salud</a>
+      <p>Ingresá a tu cuenta para continuar</p>
+    </div>
+
+    <form [formGroup]="myform" (ngSubmit)="onSubmit(); myform.valid ? myform.reset() : null" class="login-form">
+      <label class="field">
+        <span>Usuario</span>
+        <input type="text" formControlName="username" autocomplete="username" placeholder="Tu nombre de usuario" />
+      </label>
+
+      <label class="field">
+        <span>Contraseña</span>
+        <input type="password" formControlName="password" autocomplete="current-password" placeholder="••••••••" />
+      </label>
+
+      <button type="submit" class="login-btn">Iniciar sesión</button>
+    </form>
+
+    <div class="login-footer">
+      <a href="#" class="link-muted" (click)="toggleContactHelp($event)">¿Olvidaste tu contraseña?</a>
+      <span class="link-muted" *ngIf="showContactHelp">Si necesitás ayuda, comunicate a través de <a routerLink="/contacto" class="link-accent">Contacto</a> y te brindaremos atención.</span>
+      <span>¿No tenés cuenta? <a routerLink="/register" class="link-accent">Registrate</a></span>
+    </div>
+  </div>
+</main>
