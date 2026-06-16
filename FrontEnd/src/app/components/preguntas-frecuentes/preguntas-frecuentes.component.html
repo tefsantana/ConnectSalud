@@ -1,0 +1,21 @@
+<main class="faq-page">
+  <section class="faq-hero">
+    <h1>Preguntas frecuentes</h1>
+    <p>
+      Respuestas rápidas sobre turnos, planes, uso de la plataforma y canales de atención.
+    </p>
+  </section>
+
+  <section class="faq-list" aria-label="Listado de preguntas frecuentes">
+    <article class="faq-item" *ngFor="let faq of faqs">
+      <h2>{{ faq.question }}</h2>
+      <p>{{ faq.answer }}</p>
+    </article>
+  </section>
+
+  <section class="faq-cta">
+    <h2>¿No encontraste tu respuesta?</h2>
+    <p>Escribinos desde Contacto y te ayudamos a la brevedad.</p>
+    <a routerLink="/contacto" class="faq-btn">Ir a Contacto</a>
+  </section>
+</main>

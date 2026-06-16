@@ -1,0 +1,83 @@
+<main class="contact-page">
+  <section class="contact-hero">
+    <p class="eyebrow">Contacto</p>
+    <h1>Contactanos y te respondemos a la brevedad</h1>
+    <p>
+      Escribinos tus dudas sobre turnos, planes o seguimiento y nuestro equipo te acompaña en cada paso.
+    </p>
+  </section>
+
+  <section class="contact-layout">
+    <aside class="contact-info-card" aria-label="Datos de contacto">
+      <h2>Canales directos</h2>
+      <p>También podés comunicarte por estas vías si preferís atención inmediata.</p>
+
+      <div class="contact-info-list">
+        <article>
+          <h3>Teléfono</h3>
+          <a href="tel:+542114000000">+54 11 4000-0000</a>
+        </article>
+
+        <article>
+          <h3>Email</h3>
+          <a href="mailto:contacto@connectsalud.com.ar">contacto@connectsalud.com.ar</a>
+        </article>
+
+        <article>
+          <h3>Ubicación</h3>
+          <p>Buenos Aires, Argentina</p>
+        </article>
+      </div>
+
+      <div class="support-hours">
+        <h3>Horarios de atención</h3>
+        <p>Lunes a Viernes, de 9:00 a 18:00 hs.</p>
+      </div>
+    </aside>
+
+    <section class="contact-form-card" aria-label="Formulario de contacto">
+      <h2>Envíanos un mensaje</h2>
+      <form class="contact-form" #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)">
+        <div class="field-grid">
+          <label class="field">
+            <span>Nombre</span>
+            <input type="text" name="name" autocomplete="given-name" required [(ngModel)]="formData.name" #nameModel="ngModel" />
+          </label>
+
+          <label class="field">
+            <span>Apellido</span>
+            <input type="text" name="lastName" autocomplete="family-name" required [(ngModel)]="formData.lastName" #lastNameModel="ngModel" />
+          </label>
+
+          <label class="field">
+            <span>Teléfono</span>
+            <input type="tel" name="phone" autocomplete="tel" required [(ngModel)]="formData.phone" #phoneModel="ngModel" />
+          </label>
+
+          <label class="field">
+            <span>Email</span>
+            <input type="email" name="email" autocomplete="email" required [(ngModel)]="formData.email" #emailModel="ngModel" />
+          </label>
+        </div>
+
+        <label class="field">
+          <span>Asunto</span>
+          <input type="text" name="subject" required [(ngModel)]="formData.subject" #subjectModel="ngModel" />
+        </label>
+
+        <label class="field">
+          <span>Mensaje</span>
+          <textarea name="message" rows="5" required [(ngModel)]="formData.message" #messageModel="ngModel"></textarea>
+        </label>
+
+        <button type="submit" class="submit-btn" [disabled]="isSubmitting">
+          {{ isSubmitting ? 'Enviando...' : 'Enviar mensaje' }}
+        </button>
+
+        <p class="submit-feedback" [class.error]="submitError" *ngIf="submitMessage">
+          {{ submitMessage }}
+        </p>
+      </form>
+    </section>
+  </section>
+</main>

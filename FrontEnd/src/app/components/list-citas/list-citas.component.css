@@ -1,0 +1,193 @@
+.historial-page {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 52px 24px 80px;
+}
+
+.historial-hero {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  color: #113a8f;
+  font-size: 0.84rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.historial-hero h1 {
+  margin: 0 0 10px;
+  color: #0b2d75;
+  font-size: clamp(1.9rem, 3.8vw, 2.6rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.historial-hero p {
+  margin: 0 auto;
+  max-width: 54ch;
+  color: #4a5568;
+  line-height: 1.6;
+}
+
+.historial-actions-top {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 16px;
+}
+
+.btn-nueva-cita {
+  border: 0;
+  border-radius: 11px;
+  background: #113a8f;
+  color: #ffffff;
+  padding: 10px 20px;
+  font: inherit;
+  font-size: 0.92rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(17, 58, 143, 0.22);
+  transition: background 0.2s ease, transform 0.13s ease;
+}
+
+.btn-nueva-cita:hover {
+  background: #0d2a6b;
+  transform: translateY(-1px);
+}
+
+.historial-tabla-wrap {
+  background: #ffffff;
+  border: 1px solid #e8ecf5;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 28px rgba(17, 58, 143, 0.08);
+}
+
+.historial-tabla {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.historial-tabla thead tr {
+  background: linear-gradient(90deg, #f0f4ff, #f8faff);
+  border-bottom: 1px solid #e8ecf5;
+}
+
+.historial-tabla th {
+  padding: 13px 14px;
+  text-align: left;
+  color: #3a4f7a;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.historial-tabla td {
+  padding: 13px 14px;
+  color: #2c3c5b;
+  border-bottom: 1px solid #f0f3fa;
+  vertical-align: middle;
+}
+
+.historial-tabla tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.historial-tabla tbody tr:hover td {
+  background: #f8f9fd;
+}
+
+.col-mensaje {
+  max-width: 180px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.col-acciones {
+  white-space: nowrap;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.btn-editar {
+  border: 1.5px solid #113a8f;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #113a8f;
+  padding: 6px 14px;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+
+.btn-editar:hover {
+  background: #f0f4ff;
+}
+
+.btn-borrar {
+  border: 1.5px solid #d9262e;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #c0212a;
+  padding: 6px 14px;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+
+.btn-borrar:hover {
+  background: #fff0f1;
+}
+
+.sin-citas {
+  padding: 56px 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.sin-citas p {
+  margin: 0;
+  color: #5b6783;
+  font-size: 1rem;
+}
+
+@media (max-width: 900px) {
+  .historial-tabla-wrap {
+    border-radius: 14px;
+    overflow-x: auto;
+  }
+
+  .historial-tabla {
+    min-width: 700px;
+  }
+}
+
+@media (max-width: 600px) {
+  .historial-page {
+    padding: 36px 14px 60px;
+  }
+
+  .historial-actions-top {
+    justify-content: stretch;
+  }
+
+  .btn-nueva-cita {
+    width: 100%;
+    text-align: center;
+  }
+}

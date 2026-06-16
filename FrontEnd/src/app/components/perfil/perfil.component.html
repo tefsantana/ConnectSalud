@@ -1,0 +1,66 @@
+<main class="perfil-page">
+    <section class="perfil-hero">
+        <p class="eyebrow">Cuenta</p>
+        <h1>Perfil de usuario</h1>
+        <p>Gestioná tus datos personales para mantener tu cuenta actualizada.</p>
+    </section>
+
+    <section class="perfil-card" *ngIf="isLoading">
+        <p class="state-text">Cargando perfil...</p>
+    </section>
+
+    <section class="perfil-card" *ngIf="!isLoading && profile">
+        <header class="perfil-card-header">
+            <div>
+                <h2>Tu información</h2>
+                <p>Podés editar tu nombre de usuario y correo electrónico.</p>
+            </div>
+            <button type="button" class="btn-primary" *ngIf="!editing" (click)="startEdit()">Editar perfil</button>
+        </header>
+
+        <div class="alert success" *ngIf="updateSuccess">Perfil actualizado correctamente.</div>
+        <div class="alert error" *ngIf="updateError">Ha ocurrido un error al actualizar el perfil.</div>
+
+        <div class="info-grid" *ngIf="!editing">
+            <div class="info-item">
+                <span>Nombre de usuario</span>
+                <strong>{{ profile.username }}</strong>
+            </div>
+            <div class="info-item">
+                <span>Email</span>
+                <strong>{{ profile.email }}</strong>
+            </div>
+        </div>
+
+        <form class="perfil-form" *ngIf="editing" (ngSubmit)="saveChanges()" autocomplete="off">
+            <label class="field">
+                <span>Nombre de usuario</span>
+                <input type="text" [(ngModel)]="profile.username" name="username" required />
+            </label>
+
+            <label class="field">
+                <span>Email</span>
+                <input type="email" [(ngModel)]="profile.email" name="email" required />
+            </label>
+
+            <div class="actions">
+                <button type="submit" class="btn-primary">Guardar cambios</button>
+                <button type="button" class="btn-secondary" (click)="cancelEdit()">Cancelar</button>
+            </div>
+        </form>
+
+        <div class="actions" *ngIf="!editing">
+            <button type="button" class="btn-secondary" [disabled]="deletingAccount" (click)="deleteOwnAccount()">
+                {{ deletingAccount ? 'Eliminando cuenta...' : 'Eliminar mi cuenta' }}
+            </button>
+        </div>
+    </section>
+
+    <section class="perfil-card" *ngIf="!isLoading && !profile">
+        <p class="state-text">{{ profileErrorMessage || 'No se ha encontrado información del perfil. Por favor, inicia sesión.' }}</p>
+        <div class="actions">
+            <button type="button" class="btn-primary" routerLink="/login">Iniciar sesión</button>
+            <button type="button" class="btn-secondary" (click)="loadProfile()">Reintentar</button>
+        </div>
+    </section>
+</main>
