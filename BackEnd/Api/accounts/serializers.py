@@ -25,18 +25,58 @@ class CitasSerializer(serializers.ModelSerializer):
     class Meta:
         model = Citas
         fields = ['id_paciente','dni', 'nombre', 'apellido', 'telefono', 'correo', 'profesional', 'fecha', 'hora', 'mensaje', 'fecha_registro']
+        extra_kwargs = {
+            'dni': {
+                'error_messages': {
+                    'max_length': 'El DNI debe tener como maximo 8 digitos.',
+                    'blank': 'El DNI es obligatorio.',
+                }
+            },
+            'telefono': {
+                'error_messages': {
+                    'max_length': 'El telefono debe tener como maximo 10 digitos.',
+                    'blank': 'El telefono es obligatorio.',
+                }
+            }
+        }
+
+    def validate_dni(self, value):
+        dni = (value or '').strip()
+
+        if not dni.isdigit() or len(dni) < 7 or len(dni) > 8:
+            raise serializers.ValidationError('El DNI debe tener 7 u 8 digitos numericos.')
+
+        return dni
+
+    def validate_telefono(self, value):
+        telefono = (value or '').strip()
+
+        if not telefono.isdigit() or len(telefono) > 10:
+            raise serializers.ValidationError('El telefono debe tener hasta 10 digitos numericos.')
+
+        return telefono
 
     def validate(self, attrs):
-        fecha = attrs.get('fecha')
-        hora = attrs.get('hora')
-        profesional = attrs.get('profesional')
+        fecha = attrs.get('fecha', getattr(self.instance, 'fecha', None))
+        hora = attrs.get('hora', getattr(self.instance, 'hora', None))
+        profesional = (attrs.get('profesional', getattr(self.instance, 'profesional', '')) or '').strip()
 
-        queryset = Citas.objects.filter(fecha=fecha, hora=hora, profesional=profesional)
+        if not fecha or not hora or not profesional:
+            return attrs
+
+        hora_normalizada = hora.replace(second=0, microsecond=0)
+        attrs['hora'] = hora_normalizada
+        attrs['profesional'] = profesional
+
+        queryset = Citas.objects.filter(
+            fecha=fecha,
+            hora=hora_normalizada,
+        )
         if self.instance is not None:
             queryset = queryset.exclude(pk=self.instance.pk)
 
         if queryset.exists():
-            raise serializers.ValidationError({'hora': 'El horario seleccionado ya fue reservado para esa profesional en esa fecha.'})
+            raise serializers.ValidationError({'hora': 'El horario seleccionado ya fue reservado para esa fecha.'})
 
         return attrs
 

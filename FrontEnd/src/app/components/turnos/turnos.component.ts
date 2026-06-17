@@ -38,10 +38,10 @@ export class TurnosComponent implements OnInit {
     private route: Router)
     {
     this.angForm = this.fb.group({
-      dni: ['', Validators.required],
+      dni: ['', [Validators.required, Validators.pattern(/^\d{7,8}$/)]],
       nombre: ['', Validators.required],
       apellido: ['', Validators.required],
-      telefono: ['', Validators.required],
+      telefono: ['', [Validators.required, Validators.pattern(/^\d{1,10}$/)]],
       correo: ['', Validators.required],
       profesional: ['', Validators.required],
       fecha: ['', Validators.required],
@@ -155,11 +155,9 @@ export class TurnosComponent implements OnInit {
 
   private getOccupiedSlotsForDate(date: string): Set<string> {
     const slots = new Set<string>();
-    const professional = this.getSelectedProfessional();
 
     this.appointments
       .filter((item) => item.fecha === date)
-      .filter((item) => !professional || item.profesional === professional)
       .forEach((item) => slots.add(this.normalizeTime(item.hora)));
 
     return slots;
@@ -207,6 +205,18 @@ export class TurnosComponent implements OnInit {
   }
 
   postdata(data: any) {
+    if (this.angForm.get('dni')?.invalid) {
+      this.bookingError = 'El DNI debe tener 7 u 8 digitos numericos.';
+      this.angForm.get('dni')?.markAsTouched();
+      return;
+    }
+
+    if (this.angForm.get('telefono')?.invalid) {
+      this.bookingError = 'El telefono debe tener hasta 10 digitos numericos.';
+      this.angForm.get('telefono')?.markAsTouched();
+      return;
+    }
+
     if (this.angForm.invalid) {
       this.angForm.markAllAsTouched();
       this.bookingError = 'Completá todos los campos obligatorios para reservar.';
@@ -238,7 +248,10 @@ export class TurnosComponent implements OnInit {
 
     this.bookingError = '';
     this.dataService.AddCitas(payload).subscribe({
-      next: () => {
+      next: (createdAppointment: any) => {
+        this.appointments = [...this.appointments, createdAppointment || payload];
+        this.buildAvailabilityDays();
+        this.updateOccupiedSlots();
         this.route.navigate(['list-citas']);
       },
       error: (error) => {
