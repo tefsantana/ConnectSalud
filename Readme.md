@@ -41,4 +41,9 @@ source env/bin/activate # En Windows usa `env\Scripts\activate`
 
 
 ## Licencia
-Este proyecto está bajo la Licencia de `Grupo 4` de la materia Programación de Vanguardia de UNICABA
+Este proyecto está bajo la Licencia de `Grupo 3` de la materia Programación de Vanguardia de UNICABA
+
+## Autores
+- Estefanía Santana
+- Andrea Caligiuri
+- María Carrazán
